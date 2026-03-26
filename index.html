@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Unimed Aeromédica – Vídeos Tutoriais</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
+  <!-- Vimeo Player API -->
+  <script src="https://player.vimeo.com/api/player.js"></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -157,6 +159,7 @@
       font-size: clamp(1.1rem, 2vw, 1.35rem);
       line-height: 1.3;
     }
+
     .card-desc {
       font-size: clamp(0.85rem, 1.2vw, 0.95rem);
       opacity: 0.85;
@@ -164,7 +167,7 @@
       line-height: 1.6;
     }
 
-    /* 16:9 video wrapper */
+    /* 16:9 wrapper para iframe Vimeo */
     .video-wrapper {
       position: relative;
       width: 100%;
@@ -173,17 +176,16 @@
       overflow: hidden;
     }
 
-    .video-wrapper video {
+    .video-wrapper iframe {
       position: absolute;
       inset: 0;
       width: 100%;
       height: 100%;
       border: none;
-      background: #000;
     }
 
     .card-footer {
-      padding: 14px 32px 20px;
+      padding: 10px 32px 20px;
       display: flex;
       align-items: center;
       gap: 8px;
@@ -212,59 +214,14 @@
       to   { opacity: 1; transform: translateY(0); }
     }
 
-    /* ─── SPEED CONTROL ─── */
-    .speed-control {
-      padding: 10px 32px 16px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .speed-label {
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 600;
-      font-size: 0.78rem;
-      letter-spacing: 0.5px;
-      opacity: 0.80;
-      white-space: nowrap;
-    }
-
-    .speed-btns {
-      display: flex;
-      gap: 6px;
-      flex-wrap: wrap;
-    }
-
-    .speed-btn {
-      background: rgba(255,255,255,0.18);
-      border: 1.5px solid rgba(255,255,255,0.35);
-      border-radius: 20px;
-      color: var(--white);
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 700;
-      font-size: 0.78rem;
-      padding: 5px 14px;
-      cursor: pointer;
-      transition: background 0.18s, border-color 0.18s, transform 0.15s;
-      letter-spacing: 0.3px;
-    }
-    .speed-btn:hover {
-      background: rgba(255,255,255,0.30);
-      transform: scale(1.06);
-    }
-    .speed-btn.active {
-      background: var(--white);
-      color: var(--orange);
-      border-color: var(--white);
-    }
-
     /* ─── RESPONSIVE ─── */
     @media (max-width: 600px) {
       header { padding: 36px 16px 28px; }
       .logo-wrap { min-width: 160px; padding: 12px 20px; }
       .card-header { padding: 20px 20px 14px; }
-      .card-footer  { padding: 12px 20px 16px; }
+      .card-footer  { padding: 10px 20px 16px; }
       .card-number  { font-size: 2.8rem; }
+      .speed-control { padding: 10px 20px 14px; }
     }
   </style>
 </head>
@@ -295,21 +252,13 @@
     </div>
 
     <div class="video-wrapper">
-      <video id="v1" controls preload="metadata">
-        <source src="assets/tutorial.mp4" type="video/mp4" />
-        Seu navegador não suporta reprodução de vídeo.
-      </video>
-    </div>
-
-    <div class="speed-control">
-      <span class="speed-label">Velocidade:</span>
-      <div class="speed-btns">
-        <button class="speed-btn active" onclick="setSpeed('v1', 1,   this)">1x</button>
-        <button class="speed-btn"        onclick="setSpeed('v1', 1.25,this)">1.25x</button>
-        <button class="speed-btn"        onclick="setSpeed('v1', 1.5, this)">1.5x</button>
-        <button class="speed-btn"        onclick="setSpeed('v1', 1.75,this)">1.75x</button>
-        <button class="speed-btn"        onclick="setSpeed('v1', 2,   this)">2x</button>
-      </div>
+      <iframe
+        id="vimeo1"
+        src="https://player.vimeo.com/video/1177472601?h=ec&badge=0&autopause=0&player_id=vimeo1&app_id=58479"
+        allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
+        allowfullscreen
+        title="Como Realizar o Preenchimento do Formulário">
+      </iframe>
     </div>
 
     <div class="card-footer">
@@ -331,21 +280,13 @@
     </div>
 
     <div class="video-wrapper">
-      <video id="v2" controls preload="metadata">
-        <source src="video2.mp4" type="video/mp4" />
-        Seu navegador não suporta reprodução de vídeo.
-      </video>
-    </div>
-
-    <div class="speed-control">
-      <span class="speed-label">Velocidade:</span>
-      <div class="speed-btns">
-        <button class="speed-btn active" onclick="setSpeed('v2', 1,   this)">1x</button>
-        <button class="speed-btn"        onclick="setSpeed('v2', 1.25,this)">1.25x</button>
-        <button class="speed-btn"        onclick="setSpeed('v2', 1.5, this)">1.5x</button>
-        <button class="speed-btn"        onclick="setSpeed('v2', 1.75,this)">1.75x</button>
-        <button class="speed-btn"        onclick="setSpeed('v2', 2,   this)">2x</button>
-      </div>
+      <iframe
+        id="vimeo2"
+        src="https://player.vimeo.com/video/1177472601?h=ec&badge=0&autopause=0&player_id=vimeo2&app_id=58479"
+        allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
+        allowfullscreen
+        title="Como Utilizar a Plataforma">
+      </iframe>
     </div>
 
     <div class="card-footer">
@@ -363,18 +304,7 @@
   © 2026 Unimed Aeromédica · Todos os direitos reservados
 </footer>
 
-<script>
-  function setSpeed(videoId, speed, btn) {
-    const video = document.getElementById(videoId);
-    if (video) video.playbackRate = speed;
 
-    // Update active button within the same speed group
-    const btns = btn.closest('.speed-btns').querySelectorAll('.speed-btn');
-    btns.forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-  }
-</script>
 
 </body>
-</html>
 </html>
